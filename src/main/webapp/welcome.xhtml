@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+    <title>lab3web</title>
+    <h:outputStylesheet library="css" name="common_style.css"/>
+    <h:outputStylesheet library="css" name="welcome_style.css"/>
+</h:head>
+
+<h:body>
+
+    <div id="page-header">
+        <div id="headers">
+            <h1>Канукова Ева, P32302</h1>
+            <h2>Вариант 213464</h2>
+        </div>
+        <div id="header-cats">
+            <h:graphicImage class="kitties" value="images/kitty1.gif" width="140" height="110"/>
+            <h:graphicImage class="kitties" value="images/kitty2.gif" width="140" height="110"/>
+            <h:graphicImage class="kitties" value="images/kitty3.gif" width="140" height="110"/>
+            <h:graphicImage class="kitties" value="images/kitty4.gif" width="140" height="110"/>
+        </div>
+    </div>
+
+    <div id="page-container">
+        <div>
+            <h:form>
+                <h:commandButton value="Main page" action="relocate" styleClass="button"/>
+            </h:form>
+        </div>
+        <div id="time">
+            <div id="clock"></div>
+            <div id="date"></div>
+        </div>
+    </div>
+</h:body>
+<h:outputScript library="js" name="jquery-3.6.1.js"/>
+<h:outputScript library="js" name="clock.js"/>
+<h:outputScript library="js" name="animation.js"/>
+</html>

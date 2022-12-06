@@ -1,0 +1,42 @@
+#input-box {
+    margin-top: 10px;
+    background: #3f3f65;
+    border-radius: 9px;
+    width: 350px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#graph-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#graph {
+    background: #c3eaff;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+}
+
+#form-container {
+    padding: 15px;
+}
+
+.label {
+    margin-right: 7px;
+    color: #c3eaff;
+    font-weight: bold;
+}
+
+
+#table-box {
+    display: inline-block;
+    width: 700px;
+    margin-top: 10px;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+
+

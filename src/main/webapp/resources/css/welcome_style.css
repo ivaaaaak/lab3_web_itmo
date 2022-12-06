@@ -1,0 +1,50 @@
+#page-header {
+    font-family: serif;
+    color: #082b3e;
+    font-size: 15px;
+    background: #7191ac;
+    padding: 10px 10px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    display: flex;
+}
+#page-header:hover {
+    background: linear-gradient(90deg,  #7191ac, #ccfaff);
+    opacity: 100%;
+}
+#headers {
+    padding-left: 20px;
+    width: 75%;
+}
+h2 {
+    color: #093a4e;
+}
+#header-cats {
+    padding-left: 7px;
+    padding-top: 3px;
+    width: 75%;
+    text-align: right;
+}
+
+#time {
+    border: 6px double black;
+    margin: auto;
+    width: 300px;
+    padding: 5px;
+}
+#clock{
+    background: #3f3f65;
+    padding: 3px;
+    margin: auto;
+    color: #ccfaff;
+    font-size: 60px;
+    text-align: center;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+#date {
+    margin: auto;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
