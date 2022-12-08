@@ -1,11 +1,10 @@
 class GraphDrawer {
 
-    constructor(canvas, dotsReceiver) {
+    constructor(canvas) {
         this.ctx = canvas.getContext('2d');
         this.width = canvas.width;
         this.height = canvas.height;
         this.setR(getR());
-        this.dotsReceiver = dotsReceiver;
     }
 
     setR(r) {
@@ -129,33 +128,31 @@ class GraphDrawer {
         this.drawRectangle();
     }
 
-    convertXToCanvasCoordinate(x, r, canvasR) {
-        return (x / r * canvasR + this.width / 2);
+    convertXToCanvasCoordinate(x) {
+        return (x * 25 + this.width / 2);
     }
 
-    convertYToCanvasCoordinate(y, r, canvasR) {
-        return (-y / r * canvasR + this.height / 2);
+    convertYToCanvasCoordinate(y) {
+        return (-y * 25 + this.height / 2);
     }
 
     drawDot(dot) {
-        const x = this.convertXToCanvasCoordinate(dot.x, dot.r, this.R);
-        const y = this.convertYToCanvasCoordinate(dot.y, dot.r, this.R);
+        const x = this.convertXToCanvasCoordinate(dot.x);
+        const y = this.convertYToCanvasCoordinate(dot.y);
         if (dot.hit) {
-            this.ctx.fillStyle = "#110033";
+            this.ctx.fillStyle = "#02233d";
         } else {
-            this.ctx.fillStyle = "#E6E6FF";
+            this.ctx.fillStyle = "#c70101";
         }
         this.ctx.beginPath();
         this.ctx.arc(x, y, 3, 0, Math.PI * 2);
         this.ctx.fill();
     }
 
-    drawDots() {
-        this.dotsReceiver.getDotsFromServer().then(dots => {
-            dots.forEach(dot => {
-                this.drawDot(dot);
-            })
-        });
+    drawDots(dots) {
+        dots.forEach(dot => {
+            this.drawDot(dot);
+        })
     }
 
     drawGraph() {
@@ -164,12 +161,12 @@ class GraphDrawer {
         this.drawAbscissaMarks();
         this.drawOrdinateAxis();
         this.drawOrdinateMarks();
-        this.drawDots();
     }
 
-    redrawGraph() {
+    redrawGraph(dots) {
         this.ctx.clearRect(0, 0, canvas.width, canvas.height)
         this.setR(getR());
         this.drawGraph();
+        this.drawDots(dots)
     }
 }

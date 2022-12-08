@@ -1,6 +1,6 @@
 #input-box {
     margin-top: 10px;
-    background: #3f3f65;
+    background: whitesmoke;
     border-radius: 9px;
     width: 350px;
     display: inline-block;
@@ -25,8 +25,10 @@
 
 .label {
     margin-right: 7px;
-    color: #c3eaff;
+    color: #7191ac;
     font-weight: bold;
+    font-size: 20px;
+    -webkit-text-stroke: 1px black;
 }
 
 

@@ -13,6 +13,7 @@
 </h:head>
 
 <h:body>
+
     <div id="page-container">
 
         <h:form>
@@ -40,7 +41,13 @@
 
                     <h:panelGrid columns="3">
                         <h:outputText value="Y" styleClass="label" />
-                        <p:inputNumber name="y" id="y" maxlength="10" value="#{pointBean.y}" decimalSeparator="." required="true">
+                        <p:inputNumber name="y"
+                                       id="y"
+                                       maxlength="10"
+                                       value="#{pointBean.y}"
+                                       decimalSeparator="."
+                                       required="true"
+                                       validatorMessage="from -5 to 3">
                             <f:validateDoubleRange minimum="-5" maximum="3"/>
                         </p:inputNumber>
                         <p:message for="y" display="text"/>
@@ -49,33 +56,40 @@
 
                     <h:panelGrid columns="2">
                         <h:outputText value="R" styleClass="label"/>
-                        <p:selectOneMenu id="r" value="#{pointBean.r}" required="true">
+                        <p:selectOneMenu id="r" value="#{pointBean.r}" required="true" widgetVar="r">
                             <f:selectItem itemValue="1" itemLabel="1"/>
                             <f:selectItem itemValue="2" itemLabel="2"/>
                             <f:selectItem itemValue="3" itemLabel="3"/>
                             <f:selectItem itemValue="4" itemLabel="4"/>
                             <f:selectItem itemValue="5" itemLabel="5"/>
-                            <f:ajax event="change" execute="r" render="r-warning" onevent="drawer.redrawGraph()"/>
+                            <p:ajax event="change" update="drawDots"/>
                         </p:selectOneMenu>
                     </h:panelGrid>
 
 
                     <div class="buttons-container">
-                        <p:commandButton ajax="true" id="submit" value="Submit"
+                        <p:commandButton id="submit" value="Submit"
                                          action="#{pointBean.submit()}"
-                                         update="table @form"/>
-                        <p:commandButton ajax="true" id="clear" value="Clear"
-                                         action="#{attemptsManager.clearAttempts()}"
-                                         update="table @form"/>
+                                         update="table @form drawDots"
+                                         style="margin: 5px">
+                        </p:commandButton>
+                        <p:commandButton id="clear" value="Clear"
+                                         action="#{pointBean.clear()}"
+                                         update="table @form drawDots"
+                                         style="margin: 5px">
+                        </p:commandButton>
                     </div>
                 </h:form>
             </div>
         </div>
 
         <div id="table-box">
-            <p:dataTable id="table" value="#{attemptsManager.attempts}" var="point" paginator="true"
+            <p:dataTable id="table" value="#{attemptsManager.getAttempts()}" var="point" paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                          rows="10" lazy="true" paginatorPosition="bottom" paginatorAlwaysVisible="true">
+                <p:column headerText="№">
+                    <h:outputText value="#{point.id}"/>
+                </p:column>
                 <p:column headerText="X">
                     <h:outputText value="#{point.x}"/>
                 </p:column>
@@ -92,10 +106,16 @@
         </div>
     </div>
 </h:body>
-<!--<h:outputScript library="js" name="jquery-3.6.1.js"/>-->
+
 <h:outputScript library="js" name="Dot.js"/>
-<h:outputScript library="js" name="DotsReceiver.js"/>
-<h:outputScript library="js" name="DotsSender.js"/>
 <h:outputScript library="js" name="GraphDrawer.js"/>
 <h:outputScript library="js" name="Main.js"/>
+
+<h:panelGroup id="drawDots">
+    <h:outputScript>
+        drawer.redrawGraph(JSON.parse('#{attemptsManager.getJsonAttempts()}'));
+    </h:outputScript>
+</h:panelGroup>
+
+<p:remoteCommand name="addPoint" action="#{pointBean.submitWithJs()}" update="table drawDots" process="@this"/>
 </html>
