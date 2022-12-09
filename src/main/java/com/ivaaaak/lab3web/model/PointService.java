@@ -1,16 +1,14 @@
-package com.ivaaaak.lab3web.service;
+package com.ivaaaak.lab3web.model;
 
 import com.ivaaaak.lab3web.dao.AttemptsManager;
-import com.ivaaaak.lab3web.controller.PointBean;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.validation.constraints.NotNull;
 
 @Named
 @ApplicationScoped
-public class Service {
+public class PointService {
 
     @Inject
     AttemptsManager attemptsManager;

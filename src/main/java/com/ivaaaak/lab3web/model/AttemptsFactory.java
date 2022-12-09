@@ -1,4 +1,4 @@
-package com.ivaaaak.lab3web.service;
+package com.ivaaaak.lab3web.model;
 
 import com.ivaaaak.lab3web.model.Attempt;
 

@@ -1,4 +1,4 @@
-package com.ivaaaak.lab3web.service;
+package com.ivaaaak.lab3web.model;
 
 import javax.inject.Named;
 
